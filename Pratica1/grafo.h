@@ -9,24 +9,22 @@ typedef struct
 } grafo;//Matriz de adjacencia
 
 // Criar e carregar o grafo do txt
-int CriaGrafoVazio(grafo *g);
-int CarregaGrafo(grafo *g, int nvert); //nvert - Número de vertices
+int carregaGrafo();
 
 // Buscas
-int BuscaLargura();
+int bLargura();
+void bProfundidade();
 int DFS_rec();
 
 // Arvore geradora minima
-int AGeradoraMinPrim();
-int AGeradoraMinKrus();
+int arvoreMinPrim();
+int arvoreMinKrus();
 
 // Caminhos
-int CaminhosMinBFS();//Busca em Largura
-int CaminhosMinDij();
-int CaminhosMinFloyd();
-int Vazio(grafo *g);
+int cMinBFS();//Busca em Largura
+int cMinDij();
+int cMinFloyd();
 
-
-// Operações sem retorno
-void ExibeGrafo(grafo *g);
-void BuscaProfundidade();
+// Utils
+int checaVazio(grafo *g);
+void exibe(grafo *g);

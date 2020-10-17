@@ -1,22 +1,25 @@
 #include "grafo.h"
 
-int CarregaGrafo(grafo *g, int nvert){
-
+int carregaGrafo() {
+	
 }
 
-int Vazio(grafo *g){
-    return (g->N==0);
+int checaVazio(grafo* g)
+{
+	if (g->N == 0)
+		return 1;
+	return 0;
 }
 
-void ExibeGrafo(grafo *g){
- if(Vazio(g)) return;
-    int i,j;
-    for(i=0;i<g->N;i++)
-    {
-    printf("\n");
-         for(j=0;j<g->N;j++)
-        {
-            printf("%d\t",g->M[i][j]);
-        }
-    }
+void exibe(grafo* g)
+{
+	if (checaVazio(g))
+		return;
+	for (int i = 0; i < g->N; i++)
+	{
+		printf("\n");
+		for (int j = 0; j < g->N; j++)
+			printf("%d\t", g->M[i][j]);
+		printf("\n");
+	}
 }

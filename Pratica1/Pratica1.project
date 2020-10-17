@@ -93,6 +93,9 @@
     </Configuration>
   </Settings>
   <VirtualDirectory Name="src">
+    <File Name="caminho.cpp"/>
+    <File Name="arvore.cpp"/>
+    <File Name="busca.cpp"/>
     <File Name="grafo.cpp"/>
     <File Name="grafo.h"/>
     <File Name="main.cpp"/>
