@@ -1,7 +1,9 @@
 #include "grafo.h"
 
-int carregaGrafo() {
+void carregaGrafo(grafo* g) {
+	FILE *gFile = fopen("grafo.txt", "r");
 	
+	fclose(gFile);
 }
 
 int checaVazio(grafo* g)

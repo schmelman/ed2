@@ -9,7 +9,7 @@ typedef struct
 } grafo;//Matriz de adjacencia
 
 // Criar e carregar o grafo do txt
-int carregaGrafo();
+void carregaGrafo(grafo*);
 
 // Buscas
 int bLargura();
@@ -26,5 +26,5 @@ int cMinDij();
 int cMinFloyd();
 
 // Utils
-int checaVazio(grafo *g);
-void exibe(grafo *g);
+int checaVazio(grafo*);
+void exibe(grafo*);
