@@ -1,14 +1,40 @@
-#include "grafo.h"
+#include "grafo.hpp"
 
-
-int bLargura() {
+void Grafo::bfs(int inicio) {
+	vector<bool> visitados(vertices, false);
+	vector<int> fila;
+	fila.push_back(inicio);
 	
+	visitados[inicio] = true;
+	
+	int vis;
+	while(!fila.empty()) {
+		vis = fila[0];
+		cout << vis << " ";
+		fila.erase(fila.begin());
+		
+		for(int i = 0; i < vertices; i++) {
+			if(matriz[vis][i] == 1 && (!visitados[i])) {
+				fila.push_back(i);
+				visitados[i] = true;
+			}
+		}
+	}
+	this_thread::sleep_for(chrono::seconds(SLEEP_SECONDS));
 }
 
-void bProfundidade() {
-	
+void Grafo::dfs(int inicio) {
+	vector<bool> visitadosDFS(vertices, false);
+	dfsAux(inicio, visitadosDFS);
+	this_thread::sleep_for(chrono::seconds(SLEEP_SECONDS));
 }
 
-int DFS_rec() {
-	
+void Grafo::dfsAux(int inicio, vector<bool>& visitados) {
+	cout << inicio << " ";
+	visitados[inicio] = true;
+	for(int i = 0; i < vertices; i++) {
+		if(matriz[inicio][i] == 1 && (!visitados[i])) {
+			dfsAux(i, visitados);
+		}
+	}
 }

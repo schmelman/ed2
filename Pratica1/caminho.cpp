@@ -1,4 +1,4 @@
-#include "grafo.h"
+#include "grafo.hpp"
 
 int cMinBFS() {
 	
