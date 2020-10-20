@@ -4,15 +4,15 @@ void Grafo::bfs(int inicio) {
 	vector<bool> visitados(vertices, false);
 	vector<int> fila;
 	fila.push_back(inicio);
-	
+
 	visitados[inicio] = true;
-	
+
 	int vis;
 	while(!fila.empty()) {
 		vis = fila[0];
 		cout << vis << " ";
 		fila.erase(fila.begin());
-		
+
 		for(int i = 0; i < this->vertices; i++) {
 			if(this->matriz[vis][i] == 1 && (!visitados[i])) {
 				fila.push_back(i);

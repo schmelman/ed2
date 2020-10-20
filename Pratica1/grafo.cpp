@@ -122,8 +122,8 @@ void clearScreen() {
  * @param in
  */
 void flush(istream& in) {
-  in.ignore(numeric_limits<streamsize>::max(), '\n');
-  in.clear();
+	in.ignore(numeric_limits<streamsize>::max(), '\n');
+	in.clear();
 }
 
 /**
