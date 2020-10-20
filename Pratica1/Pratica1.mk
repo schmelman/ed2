@@ -62,7 +62,7 @@ AS       := C:/TDM-GCC-64/bin/as.exe
 ## User defined environment variables
 ##
 CodeLiteDir:=C:\Program Files\CodeLite
-Objects0=../build-$(ConfigurationName)/Pratica1/main.cpp$(ObjectSuffix) ../build-$(ConfigurationName)/Pratica1/grafo.cpp$(ObjectSuffix) ../build-$(ConfigurationName)/Pratica1/caminho.cpp$(ObjectSuffix) ../build-$(ConfigurationName)/Pratica1/busca.cpp$(ObjectSuffix) ../build-$(ConfigurationName)/Pratica1/arvore.cpp$(ObjectSuffix) 
+Objects0=../build-$(ConfigurationName)/Pratica1/main.cpp$(ObjectSuffix) ../build-$(ConfigurationName)/Pratica1/grafo.cpp$(ObjectSuffix) ../build-$(ConfigurationName)/Pratica1/busca.cpp$(ObjectSuffix) ../build-$(ConfigurationName)/Pratica1/arvore.cpp$(ObjectSuffix) ../build-$(ConfigurationName)/Pratica1/caminho.cpp$(ObjectSuffix) 
 
 
 
@@ -109,14 +109,6 @@ PreBuild:
 ../build-$(ConfigurationName)/Pratica1/grafo.cpp$(PreprocessSuffix): grafo.cpp
 	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) ../build-$(ConfigurationName)/Pratica1/grafo.cpp$(PreprocessSuffix) grafo.cpp
 
-../build-$(ConfigurationName)/Pratica1/caminho.cpp$(ObjectSuffix): caminho.cpp ../build-$(ConfigurationName)/Pratica1/caminho.cpp$(DependSuffix)
-	$(CXX) $(IncludePCH) $(SourceSwitch) "C:/Users/ivo/Desktop/unir/ed2/Pratica1/caminho.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/caminho.cpp$(ObjectSuffix) $(IncludePath)
-../build-$(ConfigurationName)/Pratica1/caminho.cpp$(DependSuffix): caminho.cpp
-	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT../build-$(ConfigurationName)/Pratica1/caminho.cpp$(ObjectSuffix) -MF../build-$(ConfigurationName)/Pratica1/caminho.cpp$(DependSuffix) -MM caminho.cpp
-
-../build-$(ConfigurationName)/Pratica1/caminho.cpp$(PreprocessSuffix): caminho.cpp
-	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) ../build-$(ConfigurationName)/Pratica1/caminho.cpp$(PreprocessSuffix) caminho.cpp
-
 ../build-$(ConfigurationName)/Pratica1/busca.cpp$(ObjectSuffix): busca.cpp ../build-$(ConfigurationName)/Pratica1/busca.cpp$(DependSuffix)
 	$(CXX) $(IncludePCH) $(SourceSwitch) "C:/Users/ivo/Desktop/unir/ed2/Pratica1/busca.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/busca.cpp$(ObjectSuffix) $(IncludePath)
 ../build-$(ConfigurationName)/Pratica1/busca.cpp$(DependSuffix): busca.cpp
@@ -132,6 +124,14 @@ PreBuild:
 
 ../build-$(ConfigurationName)/Pratica1/arvore.cpp$(PreprocessSuffix): arvore.cpp
 	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) ../build-$(ConfigurationName)/Pratica1/arvore.cpp$(PreprocessSuffix) arvore.cpp
+
+../build-$(ConfigurationName)/Pratica1/caminho.cpp$(ObjectSuffix): caminho.cpp ../build-$(ConfigurationName)/Pratica1/caminho.cpp$(DependSuffix)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "C:/Users/ivo/Desktop/unir/ed2/Pratica1/caminho.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/caminho.cpp$(ObjectSuffix) $(IncludePath)
+../build-$(ConfigurationName)/Pratica1/caminho.cpp$(DependSuffix): caminho.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT../build-$(ConfigurationName)/Pratica1/caminho.cpp$(ObjectSuffix) -MF../build-$(ConfigurationName)/Pratica1/caminho.cpp$(DependSuffix) -MM caminho.cpp
+
+../build-$(ConfigurationName)/Pratica1/caminho.cpp$(PreprocessSuffix): caminho.cpp
+	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) ../build-$(ConfigurationName)/Pratica1/caminho.cpp$(PreprocessSuffix) caminho.cpp
 
 
 -include ../build-$(ConfigurationName)/Pratica1//*$(DependSuffix)

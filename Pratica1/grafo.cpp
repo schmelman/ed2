@@ -62,10 +62,13 @@ int Grafo::carregaGrafo() {
 
 	if(!file.is_open()) return false; // verifica se foi possivel abrir o arquivo
 
-	// usuario insere quantos vertices há na matriz
-	cout << "numero de vertices: ";
-	cin >> vert;
-	this->vertices = vert;
+	// descobre magicamente quantas linhas (vertices) tem no arquivo
+	while(getline(file, linha))
+		this->vertices++;
+
+	// volta o ponteiro do arquivo para o começo
+	file.clear();
+	file.seekg(0, ios::beg);
 
 	// inicia um grafo vazio na memoria
 	if(!iniciaGrafo(this->vertices)) return false;
@@ -98,13 +101,13 @@ int Grafo::checaVazio() {
  * @brief exibe uma matriz de adjacências
  */
 void Grafo::exibe() {
-	if(checaVazio()) cout << "Nao eh possivel exibir um grafo vazio." << endl;
+	if(checaVazio()) cout << "nao eh possivel exibir um grafo vazio." << endl;
 	for(int i = 0; i < this->vertices; i++) {
 		for(int j = 0; j < this->vertices; j++)
-			std::cout << this->matriz[i][j] << "\t";
-		std::cout << std::endl;
+			cout << this->matriz[i][j] << " ";
+		cout << std::endl;
 	}
-	this_thread::sleep_for(chrono::seconds(SLEEP_SECONDS));
+	pause();
 }
 
 /**
@@ -112,4 +115,22 @@ void Grafo::exibe() {
  */
 void clearScreen() {
 	cout << string(100, '\n');
+}
+
+/**
+ * @brief limpa o input
+ * @param in
+ */
+void flush(istream& in) {
+  in.ignore(numeric_limits<streamsize>::max(), '\n');
+  in.clear();
+}
+
+/**
+ * @brief "pausa" o programa
+ */
+void pause() {
+	flush(cin);
+	cout << "Pressione [Enter] para continuar...";
+	cin.get();
 }

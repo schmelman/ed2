@@ -12,7 +12,7 @@ using namespace std;
  * @brief estrutura para a matriz de adjacencia
  */
 class Grafo {
-	int arestas = 0, **matriz, vertices;
+	int arestas = 0, **matriz, vertices = 0;
 	public:
 		// Buscas
 		void bfs(int);
@@ -39,3 +39,5 @@ class Grafo {
 
 // Extras
 void clearScreen();
+void flush (istream& in);
+void pause();
