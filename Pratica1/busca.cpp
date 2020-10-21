@@ -14,7 +14,7 @@ void Grafo::bfs(int inicio) {
 		fila.erase(fila.begin());
 
 		for(int i = 0; i < this->vertices; i++) {
-			if(this->matriz[vis][i] == 1 && (!visitados[i])) {
+			if(this->matriz[vis][i] != PESO_DEF && (!visitados[i])) {
 				fila.push_back(i);
 				visitados[i] = true;
 			}
@@ -35,7 +35,7 @@ void Grafo::dfsAux(int inicio, vector<bool>& visitados) {
 	cout << inicio << " ";
 	visitados[inicio] = true;
 	for(int i = 0; i < this->vertices; i++) {
-		if(this->matriz[inicio][i] == 1 && (!visitados[i])) {
+		if(this->matriz[inicio][i] != PESO_DEF && (!visitados[i])) {
 			dfsAux(i, visitados);
 		}
 	}

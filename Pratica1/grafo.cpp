@@ -17,7 +17,7 @@ int Grafo::iniciaGrafo(int nvert) {
 
 	for(int i = 0; i < this->vertices; i++)
 		for(int j = 0; j < this->vertices; j++)
-			this->matriz[i][j] = 0;
+			this->matriz[i][j] = PESO_DEF;
 	return true;
 }
 
@@ -27,8 +27,15 @@ int Grafo::iniciaGrafo(int nvert) {
  * @param v2
  * @return 
  */
-int Grafo::checaAresta(int v1, int v2) {
-	return this->matriz[v1][v2] || this->matriz[v2][v1];
+int Grafo::checaAresta(int v1, int v2, bool peso = false) {
+	int i = 0;
+	while(i != this->arestas.size()) {
+		if((peso && (this->arestas[i].v1 == v1 && this->arestas[i].v2 == v2)) || 
+				((this->arestas[i].v1 == v1 && this->arestas[i].v2 == v2) || (this->arestas[i].v1 == v2 && this->arestas[i].v2 == v2)))
+			return true;
+		i++;
+	}
+	return false;
 }
 
 /**
@@ -37,15 +44,22 @@ int Grafo::checaAresta(int v1, int v2) {
  * @param v2
  * @return 
  */
-int Grafo::inserirAresta(int v1, int v2) {
+int Grafo::inserirAresta(int v1, int v2, int peso = -1) {
 	if(v1 > this->vertices || v2 > this->vertices || v1 < 0 || v2 < 0) return false;
 	if(checaAresta(v1, v2)) return false;
 
-	this->matriz[v1][v2] = 1;
-	this->matriz[v2][v1] = 1;
-	
-	this->arestas++;
-	
+	Aresta a, b;
+	a.v1 = v1, a.v2 = v2;
+	b.v1 = v2, b.v1 = v1;
+	if(peso == -1) { 
+		this->matriz[v1][v2] = 1;
+		this->matriz[v2][v1] = 1;
+		this->arestas.push_back(a);
+		this->arestas.push_back(b);
+	} else {
+		this->matriz[v1][v2] = peso;
+		this->arestas.push_back(a);
+	}
 	return true;
 }
 
@@ -54,8 +68,7 @@ int Grafo::inserirAresta(int v1, int v2) {
  * @return 
  */
 int Grafo::carregaGrafo() {
-	int vert = 0;
-	char coluna, temAresta = '1';
+	int destino, origem, peso;
 	string linha;
 
 	ifstream file("grafo.txt"); // abre arquivo
@@ -63,26 +76,20 @@ int Grafo::carregaGrafo() {
 	if(!file.is_open()) return false; // verifica se foi possivel abrir o arquivo
 
 	// descobre magicamente quantas linhas (vertices) tem no arquivo
-	while(getline(file, linha))
-		this->vertices++;
-
-	// volta o ponteiro do arquivo para o começo
-	file.clear();
-	file.seekg(0, ios::beg);
+	getline(file, linha);
+	istringstream iss(linha);
+	iss >> this->vertices;
 
 	// inicia um grafo vazio na memoria
 	if(!iniciaGrafo(this->vertices)) return false;
 
-	int linhaAtual = 0, colunaAtual = 0;
 	while(getline(file, linha)) { // recebe a proxima linha
 		istringstream iss(linha); // deixa a linha "parseavel" (parse)
-		while(iss >> coluna) { // passa o próximo caractere para a variavel coluna
-			if(coluna == temAresta) // verifica se o caractere na variavel coluna é igual ao caractere na variavel temAresta
-				inserirAresta(linhaAtual, colunaAtual); // se forem iguais, cria a aresta na matriz do programa
-			colunaAtual++; // adiciona mais 1 no contador de coluna (j)
-		}
-		linhaAtual++; // adiciona mais 1 no contador de linhas (i)
-		colunaAtual = 0; // reseta o contador de coluna para poder pegar a próxima linha do começo
+		iss >> origem >> destino >> peso;
+		if(!checaAresta(origem - 1, destino - 1) && peso != PESO_DEF) // verifica se o caractere na variavel coluna é igual ao caractere na variavel temAresta
+			inserirAresta(origem - 1, destino - 1, peso); // se forem iguais, cria a aresta na matriz do programa
+		else if(!checaAresta(origem - 1, destino - 1))
+			inserirAresta(origem - 1, destino - 1);
 	}
 	file.close(); // fecha arquivo
 	return true;

@@ -1,9 +1,12 @@
-#define SLEEP_SECONDS 15
-
+#define PESO_DEF -1
 #include <bits/stdc++.h>
 
 using namespace std;
 
+
+struct Aresta {
+	int v1, v2;
+};
 /**
  * @class Grafo
  * @author ivo
@@ -12,7 +15,8 @@ using namespace std;
  * @brief estrutura para a matriz de adjacencia
  */
 class Grafo {
-	int arestas = 0, **matriz, vertices = 0;
+	int vertices = 0, **matriz;
+	vector<Aresta> arestas;
 	public:
 		// Buscas
 		void bfs(int);
@@ -20,7 +24,9 @@ class Grafo {
 		void dfsAux(int, vector<bool>&);
 
 		// Arvore geradora minima
-		int aMinPrim();
+		void exibeFloresta(int[]);
+		int menorChave(int[], bool[]);
+		void aMinPrim();
 		int aMinKrus();
 
 		// Caminhos
@@ -29,8 +35,8 @@ class Grafo {
 		int cMinFloyd();
 
 		// Utils
-		int inserirAresta(int, int);
-		int checaAresta(int, int);
+		int inserirAresta(int, int, int);
+		int checaAresta(int, int, bool);
 		int iniciaGrafo(int);
 		int carregaGrafo();
 		int checaVazio();

@@ -17,16 +17,16 @@ int main() {
 	do {
 		clearScreen();
 		cout << ">>>TODOS OS METODOS (EXCETO O 1) FICAM EXIBIDOS NA TELA DURANTE 15 SEGUNDOS ANTES DE VOLTAR AO MENU<<<" << endl
-			 << "1 - carregar" << endl
-			 << "2 - exibir" << endl
-			 << "3 - busca em largura" << endl
-			 << "4 - busca em profundidade" << endl
-			 << "5 - arvore geradora minima (prim)" << endl
-			 << "6 - arvore geradora minima (kruskal)" << endl
-			 << "7 - caminho minimo (busca em largura)" << endl
-			 << "8 - caminho minimo (dijkstra)" << endl
-			 << "9 - caminho minimo (floyd)" << endl
-			 << ">>> menu.: ";
+				 << "1 - carregar" << endl
+				 << "2 - exibir" << endl
+				 << "3 - busca em largura" << endl
+				 << "4 - busca em profundidade" << endl
+				 << "5 - arvore geradora minima (prim)" << endl
+				 << "6 - arvore geradora minima (kruskal)" << endl
+				 << "7 - caminho minimo (busca em largura)" << endl
+				 << "8 - caminho minimo (dijkstra)" << endl
+				 << "9 - caminho minimo (floyd)" << endl
+				 << ">>> menu.: ";
 		cin >> op;
 		switch(op) {
 			case 1:
@@ -46,6 +46,7 @@ int main() {
 				break;
 
 			case 5:
+				g.aMinPrim();
 				break;
 
 			case 6:
