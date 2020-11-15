@@ -1,0 +1,3 @@
+Nome=joao|Endereco=piraiba|Curso=cc|
+Nome=larissa|Endereco=portonovo|Curso=historia|
+Nome=silva|Endereco=velhonovo|Curso=quimica|
