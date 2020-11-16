@@ -1,9 +1,0 @@
-fase 1
-1 = 0,263+65s = 65,263s
-2 = igual ao da leitura = 65,263s
-fase 2: intercalação
-3 = 10 acessos p/ cada corrida = 100seeks, tempo = 26,3msx100 = 2630ms = 2,63s = 2,63s + 65s = 67,3s
-4 = tempo: 105s
-tempo de transf = 65s / 170s
-
-tempo total = 65,263s + 65,263s + 67,63 + 170s = 368,156s = 6,13min
